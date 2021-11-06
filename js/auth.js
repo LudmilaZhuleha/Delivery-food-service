@@ -43,7 +43,7 @@ logInForm.addEventListener('submit', (event)=>{
         password: inputPassword.value
     }
     localStorage.setItem('user', JSON.stringify(user));
-    login(user);
+    login(user); 
 })
 if(localStorage.getItem('user')){
     console.log(localStorage.getItem('user'));
