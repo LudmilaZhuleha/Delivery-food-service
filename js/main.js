@@ -9,8 +9,8 @@ const userName = document.querySelector('.user-name');
 
 const login = (user)=>{
     buttonAuth.style.display = 'none';
-    buttonOut.style.display = 'block';
-    userName.style.display = 'block';
+    buttonOut.style.display = 'flex';
+    userName.style.display = 'flex';
 
     userName.textContent = user.login;
     modalAuth.style.display = 'none';
@@ -33,7 +33,11 @@ closeAuth.addEventListener('click', ()=>{
     modalAuth.style.display = 'none';
 })
 logInForm.addEventListener('submit', (event)=>{
-    event.preventDefault();
+    event.preventDefault();   
+    if(inputPassword.value === ''|| inputLogin.value ===''){
+        alert('Please, fill out your data');
+        return;}
+   
     const user = {
         login: inputLogin.value,
         password: inputPassword.value
