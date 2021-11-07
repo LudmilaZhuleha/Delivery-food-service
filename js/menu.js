@@ -6,6 +6,19 @@ const changeTitle =(restaurant)=>{
     restaurantTitle.textContent = restaurant.name;
 }
 
+const changeRating = (restaurant)=>{
+    const restaurantRating = document.querySelector('.rating');
+    restaurantRating.textContent = restaurant.stars;
+}
+const changePrice = (restaurant)=>{
+    const restaurantPrice = document.querySelector('.price');
+    restaurantPrice.textContent = 'От '+ restaurant.price +'руб.';
+}
+const changeKitchen = (restaurant)=>{
+    const restaurantKitchen = document.querySelector('.category');
+    restaurantKitchen.textContent = restaurant.kitchen;
+}
+
 const renderItems = (data)=>{
    data.forEach(({description, id, price, image, name})=>{
        const card =document.createElement('div');
@@ -27,7 +40,7 @@ const renderItems = (data)=>{
                         <span class="button-card-text">В корзину</span>
                         <span class="button-cart-svg"></span>
                     </button>
-                    <strong class="card-price-bold">${price}</strong>
+                    <strong class="card-price-bold">От ${price}руб.</strong>
                 </div>
             </div>
        `
@@ -39,6 +52,9 @@ if(localStorage.getItem('restaurant')){
     const restaurant = JSON.parse((localStorage.getItem('restaurant')));
 
     changeTitle(restaurant);
+    changeRating(restaurant);
+    changePrice(restaurant);
+    changeKitchen(restaurant);
 
     fetch(`./db/${restaurant.products}`)
     .then((response)=>response.json())
