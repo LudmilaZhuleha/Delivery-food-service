@@ -5,7 +5,7 @@ const renderItems = (data)=>{
         const {image, kitchen, name, price, products, stars, time_of_delivery} = item;
         const a = document.createElement('a');
     
-        a.setAttribute('href', '/restaurant.html');
+        a.setAttribute('href', './restaurant.html');
         a.classList.add('card');
         a.classList.add('card-restaurant');
         a.dataset.products = products;
@@ -27,13 +27,13 @@ const renderItems = (data)=>{
                 </div>
                 
             </div> `;
-            a.addEventListener('click', (event)=>{
-                event.preventDefault();
+            a.addEventListener('click', (e)=>{
+                e.preventDefault();
                 
                 localStorage.setItem('restaurant', JSON.stringify(item));
 
-                window.location.href ='/restaurant.html';
-            })
+                window.location.href ='./restaurant.html';
+            });
             cardsRestaurants.append(a);
     });
 }
